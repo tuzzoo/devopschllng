@@ -48,5 +48,7 @@ jobs:
         run:  mvn --batch-mode versions:set -DnewVersion=${{ steps.get_next_tag.outputs.new_tag }}-SNAPHOT
       - name: Maven Build
         run:  mvn --batch-mode --update-snapshots verify
+      - name: Maven Publish package
+        run:  mvn --batch-mode deploy
         env:  
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
