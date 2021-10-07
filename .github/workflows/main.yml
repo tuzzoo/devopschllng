@@ -37,3 +37,13 @@ jobs:
         
       - name: Use new tag  
         run: echo ${{ steps.get_next_tag.outputs.new_tag }}
+        
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          java-cersion: '11'
+          distribution: 'adopt'
+          cache: maven
+      - name: Maven build
+        run:  mvn --batch-mode --update-snapshots verify
+          
