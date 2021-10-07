@@ -44,6 +44,9 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
           cache: maven
-      - name: Maven build
-        run:  mvn --batch-mode --update-snapshots verify
-          
+      - name: Maven set version
+        run:  mvn --batch-mode versions:set -DnewVersion=${{ steps.get_next_tag.outputs.new_tag }}
+      - name: Maven package & deploy
+        run:  mvn --batch-mode deploy
+        env:  
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
