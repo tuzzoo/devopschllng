@@ -29,9 +29,11 @@ jobs:
 
       
       - name: Get next tag with anothrNick
+        id: get_next_tag
         uses: anothrNick/github-tag-action@master
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DRY_RUN: true
         
-        
+      - name: Use new tag  
+        run: echo ${{ steps.get_next_tag.outputs.new_tag }}
