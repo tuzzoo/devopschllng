@@ -45,7 +45,7 @@ jobs:
           distribution: 'adopt'
           cache: maven
       - name: Maven set version
-        run:  mvn --batch-mode versions:set -DnewVersion=${{ steps.get_next_tag.outputs.new_tag }}-SNAPHOT
+        run:  mvn --batch-mode versions:set -DnewVersion=${{ steps.get_next_tag.outputs.new_tag }}
       - name: Maven Build
         run:  mvn --batch-mode --update-snapshots verify
       - name: Maven Publish package
@@ -59,3 +59,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         with:
           args: New release:${{ steps.get_next_tag.outputs.new_tag }}
+          
+      - name: Set tag with anothrNick
+        id: set_tag
+        uses: anothrNick/github-tag-action@master
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
