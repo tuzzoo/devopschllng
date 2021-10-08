@@ -64,7 +64,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          args: New release:${{ steps.get_next_tag.outputs.new_tag }}
-          
+          tag_name: ${{ steps.get_next_tag.outputs.new_tag }}
+          release_name: Release ${{ steps.get_next_tag.outputs.new_tag }}
+          args: New release:${{ steps.get_next_tag.outputs.new_tag }}          
 
           
