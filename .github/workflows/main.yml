@@ -64,11 +64,8 @@ jobs:
       - name: Create Release with elgohr
         uses: elgohr/Github-Release-Action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          tag_name: ${{ steps.get_next_tag.outputs.new_tag }}
-          release_name: Release ${{ steps.get_next_tag.outputs.new_tag }}
-        with:
-          release: ${{ steps.get_next_tag.outputs.new_tag }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
+        with:          
           args: New release:${{ steps.get_next_tag.outputs.new_tag }}          
 
           
