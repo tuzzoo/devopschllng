@@ -62,7 +62,7 @@ jobs:
           WITH_V: true
       
       - name: Create Release with elgohr
-        uses: elgohr/Github-Release-Action@master
+        uses: elgohr/Github-Release-Action@v4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
         with:          
